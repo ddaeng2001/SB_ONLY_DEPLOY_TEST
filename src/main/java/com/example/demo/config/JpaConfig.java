@@ -16,24 +16,18 @@ import java.util.Map;
 import java.util.Properties;
 
 @Configuration
-
-//Entity가 있는 위치를 스캐닝
-@EntityScan(basePackages = {"com.example.demo.domain.entity"}) //엔티티 찾기 위한 경로 설정
-//JpaRepository 위치 찾기
+@EntityScan(basePackages = {"com.example.demo.domain.entity"})
 @EnableJpaRepositories(
         basePackages = {"com.example.demo.domain.repository"},
         transactionManagerRef = "jpaTransactionManager"
-        //레파지토리들이 TX manager를 참조해서 TX처리가 될 수 있도록 함
 )
 public class JpaConfig {
-    
-    //Datasource 의존주입
+
     @Autowired
     private DataSource dataSource;
 
     @Bean
-                 //FactoryBean을 이용해서 여러 엔터티를 Bean으로 만듦
-    LocalContainerEntityManagerFactoryBean entityManagerFactory() { //이름 동일해야함!!
+    LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(dataSource);
         entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
@@ -47,18 +41,18 @@ public class JpaConfig {
 //        properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect"); // 사용 중인 DB에 맞게 변경
         properties.put("hibernate.show_sql", true);
 //        properties.put("hibernate.format_sql", true);
-//
+
 //        properties.put("hibernate.hibernate.jdbc.batch_size", 1000);
 //        properties.put("hibernate.hibernate.order_inserts", true);
 //        properties.put("hibernate.order_updates", true);
 //        properties.put("hibernate.jdbc.batch_versioned_data", true);
+
         entityManagerFactoryBean.setJpaPropertyMap(properties);
 
         return entityManagerFactoryBean;
     }
 
-
-    //애플리케이션 시작 시 데이터베이스 초기화
+//    //애플리케이션 시작 시 데이터베이스 초기화
 //    @Bean
 //    public DataSourceInitializer dataSourceInitializer() {
 //        DataSourceInitializer initializer = new DataSourceInitializer();

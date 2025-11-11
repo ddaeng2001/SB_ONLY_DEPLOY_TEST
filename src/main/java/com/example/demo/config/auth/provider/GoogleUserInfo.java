@@ -11,8 +11,8 @@ import java.util.Map;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class GoogleUserInfo implements OAuth2UserInfo {
-    private Map<String, Object> attributes; //attribute가 있어서 삽입
+public class GoogleUserInfo implements OAuth2UserInfo{
+    private Map<String,Object> attributes;
 
     @Override
     public String getName() {
@@ -31,6 +31,6 @@ public class GoogleUserInfo implements OAuth2UserInfo {
 
     @Override
     public String getProviderId() {
-        return (String)attributes.get("sub"); //Google 자체에서 ID가 sub로 지정되어있음
+        return (String)attributes.get("sub");
     }
 }

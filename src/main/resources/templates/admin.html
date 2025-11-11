@@ -5,14 +5,12 @@
     <title>Title</title>
 </head>
 <body>
-    <h1>ADMIN PAGE...</h1>
-<!--    model안쓰고 Thymeleaf자체만으로 Authentication에 접근 가능한 방법-->
-<!--    Controller에서 전달해주지 않고도 view 엔진 자체에서 확인 가능-->
-    이메일 : <span sec:authentication="name"></span><br/>
-    이메일여부 : <span sec:authentication="principal.username"></span><br/>
+    <h1>ADMIN PAGE..</h1>
+    이름 :   <span sec:authentication="name"></span><br/>
+    이메일 :   <span sec:authentication="principal.username"></span><br/>
     권한여부 : <span sec:authentication="principal.authorities"></span><br/>
     인증여부 :
-    <span sec:authorize="isAuthenticated()">로그인된 상태임</span><br/>
-    <span sec:authorize="!isAuthenticated()">로그아웃된 상태임</span><br/>
+        <span sec:authorize="isAuthenticated()">로그인된 상태임</span><br/>
+        <span sec:authorize="!isAuthenticated()">로그아웃된 상태임</span><br/>
 </body>
 </html>

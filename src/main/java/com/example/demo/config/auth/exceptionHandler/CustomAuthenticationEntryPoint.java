@@ -7,7 +7,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 
@@ -15,12 +14,11 @@ import java.io.IOException;
 @Component
 public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint {
 
-    // 인증 실패 시 실행되는 함수
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
-        log.error("CustomAuthenticationEntryPoint's commence invoke...!" + authException.getMessage());
-
+        log.error("CustomAuthenticationEntryPoint's commence invoke....! " + authException.getMessage());
         //ROLE 별로 기본페이지로 이동
         response.sendRedirect("/login?error="+authException.getMessage());
+
     }
 }

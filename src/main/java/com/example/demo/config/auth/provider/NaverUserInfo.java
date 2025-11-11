@@ -1,9 +1,11 @@
 package com.example.demo.config.auth.provider;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import java.util.Map;
 
@@ -11,19 +13,17 @@ import java.util.Map;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class NaverUserInfo implements OAuth2UserInfo{ //이 인터페이스를 통해 어떤 데이터가
-                                                      //빠져나가게 할 건지 설정
-    //속성인 message나 result 제외! 굳이 필요 없을 듯?
-    //response에 있는 속성만 담을 작업 시작>>
+public class NaverUserInfo implements OAuth2UserInfo {
 //    private String id;
-//    private String profile;
+//    private String profile_image;
 //    private String email;
 //    private String name;
-    private Map<String, Object> response; //attribute가 있어서 삽입
+
+    private Map<String,Object> response;
 
     @Override
     public String getName() {
-        return (String)response.get("name"); //찾는 작업
+        return (String)response.get("name");
     }
 
     @Override

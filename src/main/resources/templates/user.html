@@ -5,14 +5,14 @@
     <title>Title</title>
 </head>
 <body>
-    <h1>USER PAGE...</h1>
+    <h1>USER PAGE..</h1>
 
-    auth_1: <div th:text="${auth_1}"></div>
+    auth_1 : <div th:text="${auth_1}"></div>
     <hr/>
-    auth_1.getPrincipal() : <div th:text="${auth_1.getPrincipal()}"></div>
+    auth_1.getPrincipal() : <span th:text="${auth_1.getPrincipal()}"></span>
     <hr/>
-    auth_1.getDetails() : <div th:text="${auth_1.getDetails()}"></div>
+    auth_1.getDetails() : <span th:text="${auth_1.getDetails()}"></span>
     <hr/>
-    auth_1.isAuthenticated() : <div th:text="${auth_1.isAuthenticated()}"></div>
+    auth_1.isAuthenticated() : <span th:text="${auth_1.isAuthenticated()}"></span>
 </body>
 </html>
